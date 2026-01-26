@@ -1,0 +1,183 @@
+/* CSS VARIABLES */
+:root {
+  --bg: #ffffff;
+  --text: #333;
+  --primary: #4f7cff;
+  --muted: #888;
+  --radius: 10px;
+  --font: "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: var(--font);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  min-height: 100vh;
+}
+
+.hero-left,
+.hero-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.hero-left h1 {
+  font-size: 3rem;
+}
+
+.btn {
+  text-decoration: none;
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  margin-top: 20px;
+}
+
+/* PROJECT CARDS */
+.projects {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.card {
+  width: 200px;
+  height: 150px;
+  perspective: 1000px;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  background: #f0f0f0;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background: var(--primary);
+  color: white;
+}
+
+/* SKILLS */
+.skill {
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.bar {
+  background: #e0e0e0;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.fill {
+  height: 10px;
+  background: var(--primary);
+}
+
+.fill.html {
+  width: 90%;
+}
+.fill.css {
+  width: 80%;
+}
+
+/* TESTIMONIAL CAROUSEL */
+.carousel {
+  width: 300px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.carousel input {
+  display: none;
+}
+
+.slides {
+  display: flex;
+  width: 300%;
+  transition: transform 0.6s;
+}
+
+.carousel input:nth-child(1):checked ~ .slides {
+  transform: translateX(0);
+}
+.carousel input:nth-child(2):checked ~ .slides {
+  transform: translateX(-33.33%);
+}
+.carousel input:nth-child(3):checked ~ .slides {
+  transform: translateX(-66.66%);
+}
+
+.slides p {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+}
+
+/* CONTACT FORM */
+.contact-form {
+  max-width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+}
+
+.contact-form input:invalid,
+.contact-form textarea:invalid {
+  border-color: red;
+}
+
+.contact-form input:valid,
+.contact-form textarea:valid {
+  border-color: green;
+}
+
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
