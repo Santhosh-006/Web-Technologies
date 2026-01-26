@@ -1,70 +1,174 @@
-/* CSS VARIABLES */
 :root {
-  --bg: #ffffff;
-  --text: #333;
-  --primary: #4f7cff;
-  --muted: #888;
-  --radius: 10px;
-  --font: "Segoe UI", sans-serif;
+  --bg-color: #ffffff;
+  --bg-alt: #fff0f5; /* Very light pink tint for sections */
+  --text-main: #291720; /* Dark Purple/Black */
+
+  /* Palette */
+  --color-orange: #fb8b24;
+  --color-pink: #d90368;
+  --color-purple: #820263;
+
+  /* Gradients */
+  --gradient-main: linear-gradient(
+    135deg,
+    var(--color-orange),
+    var(--color-pink)
+  );
+  --gradient-hover: linear-gradient(
+    135deg,
+    var(--color-pink),
+    var(--color-purple)
+  );
+
+  --radius: 12px;
+  --shadow: 0 10px 30px rgba(130, 2, 99, 0.15); /* Purple tinted shadow */
+  --font: "Poppins", sans-serif;
 }
 
+/* --- GLOBAL RESET --- */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   font-family: var(--font);
 }
 
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
+html {
+  scroll-behavior: smooth;
 }
 
-/* HERO */
+body {
+  background: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-purple);
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+}
+
+.section {
+  padding: 80px 10%;
+}
+
+.center {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 2.5rem;
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Gradient Text Effect */
+  display: inline-block;
+  width: 100%;
+}
+
+/* --- BUTTON STYLES --- */
+.btn {
+  display: inline-block;
+  background: var(--gradient-main);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 50px; /* Pill shape */
+  font-weight: 600;
+  margin-top: 20px;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(217, 3, 104, 0.4);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  background: var(--gradient-hover);
+  box-shadow: 0 8px 20px rgba(130, 2, 99, 0.4);
+}
+
+/* --- HERO SECTION --- */
 .hero {
   display: flex;
   min-height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10%;
+  background: radial-gradient(circle at top right, #fff0f5 0%, #fff 40%);
 }
 
-.hero-left,
-.hero-right {
+.hero-left {
   flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  padding-right: 50px;
 }
 
 .hero-left h1 {
-  font-size: 3rem;
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  color: var(--text-main);
 }
 
-.btn {
-  text-decoration: none;
-  background: var(--primary);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: var(--radius);
-  margin-top: 20px;
+.hero-left span {
+  color: var(--color-pink);
 }
 
-/* PROJECT CARDS */
-.projects {
+.hero-left p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.hero-right {
+  flex: 1;
   display: flex;
-  gap: 30px;
   justify-content: center;
 }
 
+.hero-right img {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Organic shape */
+  box-shadow: var(--shadow);
+  border: 4px solid white;
+  animation: blob 5s ease-in-out infinite alternate;
+}
+
+@keyframes blob {
+  0% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+  100% {
+    border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+  }
+}
+
+/* --- PROJECTS (Cards) --- */
+.projects {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .card {
-  width: 200px;
-  height: 150px;
+  width: 280px;
+  height: 200px;
   perspective: 1000px;
+  cursor: pointer;
 }
 
 .card-inner {
   width: 100%;
   height: 100%;
-  transition: transform 0.6s;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform-style: preserve-3d;
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
 }
 
 .card:hover .card-inner {
@@ -78,33 +182,58 @@ body {
   height: 100%;
   border-radius: var(--radius);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   backface-visibility: hidden;
-  background: #f0f0f0;
+}
+
+.card-front {
+  background: white;
+  border: 1px solid #ffe0ea;
+  color: var(--color-purple);
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
 .card-back {
   transform: rotateY(180deg);
-  background: var(--primary);
+  background: var(--gradient-hover);
   color: white;
+  padding: 20px;
+  text-align: center;
 }
 
-/* SKILLS */
+/* --- SKILLS --- */
+.skills-section {
+  background: var(--bg-alt);
+}
+
 .skill {
-  max-width: 400px;
-  margin: 20px auto;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+}
+
+.skill span {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-main);
 }
 
 .bar {
-  background: #e0e0e0;
-  border-radius: var(--radius);
+  background: #e6e6e6; /* Lighter grey for cleaner look */
+  border-radius: 20px;
+  height: 12px;
   overflow: hidden;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .fill {
-  height: 10px;
-  background: var(--primary);
+  height: 100%;
+  background: var(--gradient-main);
+  border-radius: 20px;
+  transition: width 1s ease-in-out;
 }
 
 .fill.html {
@@ -114,11 +243,18 @@ body {
   width: 80%;
 }
 
-/* TESTIMONIAL CAROUSEL */
+/* --- TESTIMONIALS --- */
 .carousel {
-  width: 300px;
+  width: 100%;
+  max-width: 600px;
   margin: auto;
   overflow: hidden;
+  position: relative;
+  background: white;
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid #ffe0ea;
 }
 
 .carousel input {
@@ -128,7 +264,7 @@ body {
 .slides {
   display: flex;
   width: 300%;
-  transition: transform 0.6s;
+  transition: transform 0.6s ease-in-out;
 }
 
 .carousel input:nth-child(1):checked ~ .slides {
@@ -144,40 +280,115 @@ body {
 .slides p {
   width: 100%;
   text-align: center;
-  padding: 20px;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-purple);
 }
 
-/* CONTACT FORM */
+/* Navigation dots for carousel */
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  background: #eee;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Logic to color active dot would usually require JS or complex CSS sibling selectors. 
+         For simplicity, styled them static here, but user can click the labels below */
+.carousel-labels {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 10px;
+}
+.carousel-labels label {
+  width: 12px;
+  height: 12px;
+  background: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.carousel-labels label:hover {
+  background: var(--color-pink);
+}
+
+/* --- CONTACT FORM --- */
+.contact-section {
+  background: var(--bg-alt);
+}
+
 .contact-form {
-  max-width: 400px;
+  max-width: 500px;
   margin: auto;
+  background: white;
+  padding: 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
 .contact-form input,
 .contact-form textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 15px;
+  border: 2px solid #eee;
   border-radius: var(--radius);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+  background: #fdfdfd;
 }
 
-.contact-form input:invalid,
-.contact-form textarea:invalid {
-  border-color: red;
+/* Active Focus Color from Palette */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--color-orange);
+  background: white;
 }
 
-.contact-form input:valid,
-.contact-form textarea:valid {
-  border-color: green;
-}
-
-button {
-  background: var(--primary);
+.contact-form button {
+  background: var(--gradient-main);
   color: white;
   border: none;
-  padding: 10px;
+  padding: 15px;
   border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background: var(--gradient-hover);
+  letter-spacing: 1px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding-top: 100px;
+  }
+  .hero-left {
+    padding-right: 0;
+  }
+  .hero-right img {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 30px;
+  }
+  .hero-left h1 {
+    font-size: 2.5rem;
+  }
 }
