@@ -1,0 +1,22 @@
+:root {
+  --bs-body-font-family: "Inter", sans-serif;
+}
+.hero {
+  background: radial-gradient(circle at top right, #f8f9ff, #ffffff);
+}
+.card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border: none;
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+.nav-link {
+  font-weight: 500;
+}
+section {
+  padding: 100px 0;
+}
