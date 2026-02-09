@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dynamic Survey Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Customer Satisfaction Survey</h1>
+
+      <!-- Progress Bar -->
+      <div class="progress-wrapper">
+        <div id="progressBar"></div>
+      </div>
+
+      <form id="surveyForm">
+        <!-- 1 -->
+        <div class="field">
+          <label>Full Name *</label>
+          <input type="text" id="name" />
+        </div>
+
+        <!-- 2 -->
+        <div class="field">
+          <label>Age (18–60) *</label>
+          <input type="number" id="age" />
+        </div>
+
+        <!-- 3 -->
+        <div class="field">
+          <label>Gender *</label>
+          <select id="gender">
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <!-- 4 -->
+        <div class="field">
+          <label>Rate Our Service *</label>
+          <div class="options">
+            <input type="radio" name="rating" value="1" />1
+            <input type="radio" name="rating" value="2" />2
+            <input type="radio" name="rating" value="3" />3
+            <input type="radio" name="rating" value="4" />4
+            <input type="radio" name="rating" value="5" />5
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="field">
+          <label>Are you satisfied? *</label>
+          <div class="options">
+            <input type="radio" name="satisfied" value="Yes" /> Yes
+            <input type="radio" name="satisfied" value="No" /> No
+          </div>
+        </div>
+
+        <!-- CONDITIONAL QUESTION -->
+        <div class="field hidden" id="conditionalBox">
+          <label>Please tell us why *</label>
+          <textarea id="reason"></textarea>
+        </div>
+
+        <!-- 6 -->
+        <div class="field">
+          <label>Select 2–3 Features You Like *</label>
+          <div class="options">
+            <input type="checkbox" class="feature" /> Design
+            <input type="checkbox" class="feature" /> Speed
+            <input type="checkbox" class="feature" /> Support
+            <input type="checkbox" class="feature" /> Price
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="field">
+          <label>Satisfaction Level (1–10)</label>
+          <input type="range" id="level" min="1" max="10" />
+        </div>
+
+        <!-- 8 -->
+        <div class="field">
+          <label>Email *</label>
+          <input type="email" id="email" />
+        </div>
+
+        <!-- 9 -->
+        <div class="field">
+          <label>Suggestions</label>
+          <textarea id="suggestions"></textarea>
+        </div>
+
+        <!-- 10 -->
+        <button type="submit">Submit Survey</button>
+      </form>
+
+      <p id="status"></p>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f4f6f8;
+  padding: 40px;
+}
+
+.container {
+  background: #ffffff;
+  max-width: 600px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+label {
+  font-weight: 600;
+  color: #34495e;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.options input {
+  width: auto;
+  margin-right: 6px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #2c3e50;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background: #1a252f;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Progress Bar */
+.progress-wrapper {
+  height: 8px;
+  background: #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+#progressBar {
+  height: 8px;
+  width: 0%;
+  background: #2c3e50;
+  border-radius: 5px;
+}
